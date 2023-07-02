@@ -8,7 +8,7 @@
 // Quando uma função não retorna nada, ela é do tipo void
 // Nomes de função são em PascalCase, ou seja, a primeira letra de cada palavra é maiúscula
 string boasVindas = "Bem vindo(a) ao Screen Sound";
-void ExibirMensagemDeBoasVindas()
+void ExibirLogo()
 {   // Verbatim string, ou seja, o texto é exibido exatamente como está escrito, sem precisar de caracteres de escape
     Console.WriteLine(@"
        
@@ -24,7 +24,8 @@ void ExibirMensagemDeBoasVindas()
 }
 
 void ExbirOpcoesDoMenu()
-{
+{   
+    ExibirLogo();
     Console.WriteLine();
     Console.WriteLine("1 - Registrar uma banda");
     Console.WriteLine("2 - Listar bandas");
@@ -42,7 +43,7 @@ void ExbirOpcoesDoMenu()
     switch (opcaoEscolhaNumerica)
     {
         case 1:
-            Console.WriteLine("Registrar uma banda");
+            RegistrarBandas();
             break;
         case 2:
             Console.WriteLine("Listar bandas");
@@ -63,5 +64,17 @@ void ExbirOpcoesDoMenu()
 
 
 }
-ExibirMensagemDeBoasVindas();
+void RegistrarBandas()
+{   
+    // Console.Clear limpa a tela do console
+    Console.Clear();
+    Console.WriteLine("Registrar uma banda");
+    Console.Write("Informe o nome da banda que você deseja registrar: ");
+    string nomeDaBnada = Console.ReadLine()!;
+    Console.WriteLine($"Banda {nomeDaBnada} registrada com sucesso!");
+    // Thread.Sleep é uma função que faz o programa esperar por um tempo determinado, em milissegundos
+    Thread.Sleep(2000);
+    Console.Clear();
+    ExbirOpcoesDoMenu();
+}
 ExbirOpcoesDoMenu();
